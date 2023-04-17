@@ -1,6 +1,6 @@
 # SC2023 paper supporting materials
 
-This document lists and describes all files used for the experiments presented in the paper as well as scripts for local purposes (see [our reproducibility guidelines](https://gitlab.inria.fr/melissa/melissa/-/blob/heatpde-sc2023/README.md)).
+This document lists and describes all files used for the experiments presented in the paper as well as scripts for local purposes (see [our reproducibility guidelines](https://gitlab.inria.fr/melissa/sc2023/-/blob/main/README.md)).
 
 ## online experiments: `heat-pde-dl`
 
@@ -43,3 +43,10 @@ This sub-folder contains all scripts for offline training, data generation and d
 - `study_sg.sh`: bash script to be submitted on Jean-Zay supercomputer in order to perform the offline data generation
 
 **Note**: this script is not to be used locally.
+
+## Plotting scripts: `heat-pde-dl/plot`
+
+- `plot_loss.py`: this script generates post-processing plots for the loss comparison
+- `plot_throughput.py`: this script generates post-processing plots for the throughput comparison
+- `convert_to_df.py`: this script converts the tensorboard logs from the experiments to a pandas dataframe for post processing.
+
