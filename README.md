@@ -140,15 +140,15 @@ $! ---------------------------------------------- $!
 
 Access the terminal-based Melissa monitor by opening a new terminal and executing:
 
-melissa-monitor --http_bind=0.0.0.0 --http_port=8888 --http_token=<some-token> --output_dir=/path/to/melissa/examples/heat-pde/heat-pde-dl/offline/TRAINING_OUT 
+melissa-monitor --http_bind=0.0.0.0 --http_port=8888 --http_token=<some-token> --output_dir=/path/to/experiments/sc2023/heat-pde-dl/offline/TRAINING_OUT 
 
-All output for current run will be written to /path/to/melissa/examples/heat-pde/heat-pde-dl/offline/TRAINING_OUT
+All output for current run will be written to /path/to/sc2023/heat-pde-dl/offline/TRAINING_OUT
 ```
 
 Thus, by opening a second terminal, the user should be able to follow the progress of the data generation:
 ```sh
-source /path/to/melissamelissa_set_env.sh
-melissa-monitor --http_bind=0.0.0.0 --http_port=8888 --http_token=<some-token> --output_dir=/path/to/melissa/examples/heat-pde/heat-pde-dl/offline/TRAINING_OUT
+source /path/to/melissa/melissa_set_env.sh
+melissa-monitor --http_bind=0.0.0.0 --http_port=8888 --http_token=<some-token> --output_dir=/path/to/experiments/sc2023/heat-pde-dl/offline/TRAINING_OUT
 ```
 
 **Note**: the `job_limit` is set to 3 so that in addition to the server, only 2 clients can be executed at the same time. Depending on the resources available, this number can be increased or decreased to any more suitable value.
@@ -202,7 +202,7 @@ Now that the reference training has been performed, let us try online training.
 
 First move to the example parent directory `heat-pde-dl`:
 ```sh
-# from melissa/examples/heat-pde/heat-pde-dl/offline
+# from ~/experiments/sc2023/heat-pde-dl/offline
 cd ..
 ```
 
@@ -210,7 +210,7 @@ Modify `config_mpi.json` to indicate the right paths to the validation dataset a
 ```json
 {
     "dl_config": {
-        "valid_data_path": "/path/to/melissa/examples/heat-pde/heat-pde-dl/offline/sc2023-heatpde-validation/",
+        "valid_data_path": "/path/to/experiments/sc203/heat-pde-dl/offline/sc2023-heatpde-validation/",
     },
     "client_config": {
         "executable_command": "/path/to/melissa/examples/heat-pde/executables/build/heatc",
