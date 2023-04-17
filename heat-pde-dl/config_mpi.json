@@ -4,7 +4,7 @@
 {
     "server_filename": "heatpde_dl_server.py",
     "server_class": "HeatPDEServerDL",
-    "output_dir": "RESERVOIR_OUT",
+    "output_dir": "FIFO_OUT",
     "study_options": {
         "field_names": [
             "temperature"
@@ -27,14 +27,14 @@
         "verbosity": 2
     },
     "dl_config": {
-        "valid_data_path": "/home/robert/projects/melissa/examples/heat-pde/heat-pde-dl/offline/sc2023-heatpde-validation/",
+        "valid_data_path": "/path/to/experiments/sc2023/heat-pde-dl/offline/sc2023-heatpde-validation/",
         "n_valid_simulations": 10,
         "n_batches_update": 100,
         "batch_size": 10,
         "per_server_watermark": 500,
         "buffer_size": 2500,
         "zmq_hwm": 10,
-        "buffer": "Reservoir",
+        "buffer": "FIFO",
         "convert_log_to_df": true
     },
     "launcher_config": {
@@ -42,13 +42,13 @@
         "scheduler_arg_client": ["-n", "1","--timeout", "60"],
         "scheduler_arg_server": ["-n", "1","--timeout", "3600"],
         "fault_tolerance": false,
-        "job_limit": 6,
+        "job_limit": 3,
         "timer_delay": 1,
         "verbosity": 2
     },
     "client_config": {
         // FIXME: the executable command needs to be replaced with the appropriate path
-        "executable_command": "/home/robert/projects/melissa/examples/heat-pde/executables/build/heatc",
+        "executable_command": "/path/to/melissa/examples/heat-pde/executables/build/heatc",
         // all bash commands to be executed on the job node prior to melissa study
         "preprocessing_commands": [
             "echo bash commands",
