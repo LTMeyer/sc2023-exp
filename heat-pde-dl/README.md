@@ -17,7 +17,6 @@ This is the main experiment folder which contains the scripts for online trainin
 
 **Note**: the only difference between these two files lies in the learning rate milestones.
 
-- `plot.py`: this script generates post-processing plots
 - `study_sg.sh`: bash script to be submitted on Jean-Zay supercomputer in order to perform online experiments
 
 **Note**: the time and resources are to be adjusted to go from experiments of Table 2 to the experiment of Table 3
