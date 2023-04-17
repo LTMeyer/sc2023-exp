@@ -279,3 +279,20 @@ python plot_throughput.py
 ```
 
 The figures will be saved to the `plot` directory as `png` files.
+
+
+# Reproducing the exact figures from the paper
+
+The data generated from our large scale experiments are contained in the accompanied `.zip` file called `sc2023_data.zip`. To reproduce the figures from the paper, simply run the following commands:
+
+```bash
+# from ~/experiments/sc2023
+unzip sc2023_data.zip
+cd sc2023_data/src
+python3 Figure_2_throughput.py
+python3 Figure_4_loss.py
+python3 Figure_5_multi_gpu.py
+python3 Figure_6_largescale_onlineoffline.py
+```
+
+Which will generate each figure in the `sc2023_data/figs` directory.
