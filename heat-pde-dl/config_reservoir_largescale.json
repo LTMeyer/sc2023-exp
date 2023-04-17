@@ -1,0 +1,92 @@
+// Please make sure that all entries preceded by a comment including
+// the "FIXME" keyword are changed before running Melissa with this
+// config file
+{
+    "server_filename": "heatpde_dl_server_largescale.py",
+    "server_class": "HeatPDEServerDL",
+    "output_dir": "U1_ThresholdEvictOnWriteQueue_8GPU_withval_3000buffersize",
+    "study_options": {
+        "field_names": [
+            "temperature"
+        ],
+        // parameter_sweep_size is the number of clients (i.e. simulations) to execute
+        "parameter_sweep_size": 25000,
+        // num_samples is the number *expected* from the simulation, not the set number
+        "num_samples": 100,
+        "nb_parameters": 5,
+        "parameter_range": [100, 500],
+        // this option sets Nx = Ny = mesh_size
+        "mesh_size": 1000,
+        // this option yields dt = 1 / time_discretization but does not change num_samples
+        "time_discretization": 100,
+        "seed": 123,
+        "simulation_timeout": 400,
+        "checkpoint_interval": 300,
+        "crashes_before_redraw": 1000,
+        "verbosity": 2,
+        "remove_client_scripts": true
+    },
+    "dl_config": {
+        "valid_data_path": "/gpfswork/rech/igf/commun/sc2023-heatpde-validation/",
+        "n_valid_simulations": 10, 
+        "n_batches_update": 500,
+        "batch_size": 10,
+        "per_server_watermark": 1000,
+        "buffer_size": 3000,
+        "zmq_hwm": 1,
+        "buffer": "ThresholdEvictOnWriteQueue",
+        "setup_jz": true
+    },
+    "launcher_config": {
+        "scheduler": "slurm-semiglobal",
+        // the following option enables to execute the server on
+        // one GPU
+        "scheduler_arg_server": [
+            "--account=igf@v100",
+            "--nodes=2",
+            "--ntasks-per-node=4",
+            "--gres=gpu:4",
+            "--cpus-per-task=10",
+            "--threads-per-core=1",
+            "--hint=nomultithread",
+            "--time=20:00:00"
+        ],
+        // replacing the option above with the one below will
+        // have for consequence to execute the server on two cores instead
+        // "scheduler_arg_server": [
+        //     "--account=igf@cpu",
+        //     "--ntasks=2",
+        //     "--time=01:00:00"
+        // ],
+        "scheduler_arg_client": [
+            "--account=igf@cpu",
+            "--nodes=1",
+            "--ntasks=20",
+            "--time=00:30:00",
+            "--exclusive"
+        ],
+        "job_limit": 1001,
+        "timer_delay": 1,
+        "fault_tolerance": true,
+        "verbosity": 2,
+        "std_output": true,
+        "server_timeout": 400
+    },
+    "client_config": {
+        // FIXME: the executable command needs to be replaced with the appropriate path
+        "executable_command": "$ALL_CCFRWORK/$USER/melissa/examples/heat-pde/executables/build/heatc",
+        // all bash commands to be executed on the job node prior to melissa study
+        "preprocessing_commands": [
+            "module purge",
+            "module load zeromq",
+            "module load pytorch-gpu/py3/1.13.0"
+        ]
+    },
+    "server_config": {
+        "preprocessing_commands": [
+            "module purge",
+            "module load zeromq",
+            "module load pytorch-gpu/py3/1.13.0"
+        ]
+    }
+}

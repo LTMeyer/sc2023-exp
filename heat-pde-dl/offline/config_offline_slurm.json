@@ -1,0 +1,70 @@
+// Please make sure that all entries preceded by a comment including
+// the "FIXME" keyword are changed before running Melissa with this
+// config file
+{
+    "server_filename": "heatpde_offline_server.py",
+    "server_class": "HeatPDEServerSA",
+    "output_dir": "OFFLINE_OUT_TRAINING",
+    "study_options": {
+        "field_names": [
+            "temperature"
+        ],
+        // parameter_sweep_size is the number of clients (i.e. simulations) to execute
+        "parameter_sweep_size": 250,
+        // num_samples is the number *expected* from the simulation, not the set number
+        "num_samples": 100,
+        "nb_parameters": 5,
+        "parameter_range": [100, 500],
+        // this option sets Nx = Ny = mesh_size
+        "mesh_size": 1000,
+        // this option yields dt = 1 / time_discretization but does not change num_samples
+        "time_discretization": 100,
+        "seed": 123,
+        "simulation_timeout": 400,
+        "checkpoint_interval": 300,
+        "crashes_before_redraw": 1000,
+        "verbosity": 2
+    },
+    "sa_config": {
+        "mean": false,
+        "variance": false,
+        "skewness": false,
+        "kurtosis": false,
+        "sobol_indices": false
+    },
+    "launcher_config": {
+        "scheduler": "slurm-semiglobal",
+        // the following option enables to execute the server on
+        // one GPU
+        "scheduler_arg_server": [
+            "--qos=qos_cpu-dev",
+            "--account=igf@cpu",
+            "--ntasks=1",
+            "--time=01:00:00"
+        ],
+        "scheduler_arg_client": [
+            "--account=igf@cpu",
+            "--nodes=1",
+            "--ntasks=20",
+            "--time=00:30:00",
+            "--exclusive"
+        ],
+        "job_limit": 101,
+        "timer_delay": 1,
+        "fault_tolerance": false,
+        "verbosity": 2
+    },
+    "client_config": {
+        // FIXME: the executable command needs to be replaced with the appropriate path
+        "executable_command": "/path/to/melissa/examples/heat-pde/executables/build/heat_no_melissac",
+        // all bash commands to be executed on the job node prior to melissa study
+        "preprocessing_commands": [
+            "mkdir Res_$MELISSA_SIMU_ID",
+            "cd Res_$MELISSA_SIMU_ID"
+        ]
+    },
+    "server_config": {
+        "preprocessing_commands": [
+        ]
+    }
+}

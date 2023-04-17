@@ -1,0 +1,58 @@
+// Please make sure that all entries preceded by a comment including
+// the "FIXME" keyword are changed before running Melissa with this
+// config file
+{
+    "server_filename": "heatpde_offline_server.py",
+    "server_class": "HeatPDEServerSA",
+    "output_dir": "VALIDATION_OUT",
+    "study_options": {
+        "field_names": [
+            "temperature"
+        ],
+        // parameter_sweep_size is the number of clients (i.e. simulations) to execute
+        "parameter_sweep_size": 10,
+        // num_samples is the number *expected* from the simulation, not the set number
+        "num_samples": 100,
+        "nb_parameters": 5,
+        "parameter_range": [100, 500],
+        // this option sets Nx = Ny = mesh_size
+        "mesh_size": 100,
+        // this option yields dt = 1 / time_discretization but does not change num_samples
+        "time_discretization": 100,
+        "seed": 1234,
+        "simulation_timeout": 400,
+        "checkpoint_interval": 300,
+        "crashes_before_redraw": 1000,
+        "verbosity": 2
+    },
+    "sa_config": {
+        "mean": false,
+        "variance": false,
+        "skewness": false,
+        "kurtosis": false,
+        "sobol_indices": false
+    },
+    "launcher_config": {
+        "scheduler": "openmpi",
+        "scheduler_arg_client": ["-n", "1","--timeout", "60"],
+        "scheduler_arg_server": ["-n", "1","--timeout", "3600"],
+        "fault_tolerance": false,
+        // FIXME: job_limit - 1 defines how many clients can be run at the same time
+        "job_limit": 6,
+        "timer_delay": 1,
+        "verbosity": 2
+    },
+    "client_config": {
+        // FIXME: the executable command needs to be replaced with the appropriate path
+        "executable_command": "/home/robert/projects/melissa/examples/heat-pde/executables/build/heat_no_melissac",
+        // all bash commands to be executed on the job node prior to melissa study
+        "preprocessing_commands": [
+            "mkdir Res_$MELISSA_SIMU_ID",
+            "cd Res_$MELISSA_SIMU_ID"
+        ]
+    },
+    "server_config": {
+        "preprocessing_commands": [
+        ]
+    }
+}
