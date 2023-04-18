@@ -162,6 +162,7 @@ By modifying the `output_dir` entry, setting `parameter_sweep_size` to 10 and 
     "study_options": {
         // parameter_sweep_size is the number of clients (i.e. simulations) to execute
         "parameter_sweep_size": 10,
+        ...
         "seed": 1234,
     },
 }
