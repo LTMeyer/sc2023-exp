@@ -112,7 +112,7 @@ def train_model(args, logger, train_dataloader, valid_dataloader, device, idr_ra
         optimizer, milestones=milestones, gamma=0.5
     )
 
-    print(f"Validation dataset size {valid_dataloader.dataset}")
+    print(f"Validation dataset size {len(valid_dataloader.dataset)}")
     print("Starting training loop")
     last_batch_time = time.time()
     # Train loop exactly the same as heatpde_server.py

@@ -105,7 +105,7 @@ plt.ylim(1, 1e5)
 
 
 # add labels and legend
-plt.xlabel("# Batch")
+plt.xlabel(r"\# Batch")
 plt.ylabel("Loss")
 
 # create custom legend
