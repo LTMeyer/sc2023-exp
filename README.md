@@ -12,6 +12,8 @@ This way, access to moderate resources only (i.e. any local laptop with multiple
 
 The next sections, will guide the reader step by step.
 
+(:toc)
+
 ## Building Melissa
 
 Melissa is a framework designed to run on supercomputers with common batch scheduler such as `slurm` or `OAR`. For local execution, Melissa relies on `OpenMPI` and the scheduling is left to the launcher. Installation guidelines are detailed on the [documentation](https://melissa.gitlabpages.inria.fr/melissa/install/) and are recalled below:
@@ -213,6 +215,7 @@ Modify `config_mpi.json` to indicate the right paths to the validation dataset a
     "dl_config": {
         "valid_data_path": "/path/to/experiments/sc203/heat-pde-dl/offline/sc2023-heatpde-validation/",
     },
+    ...
     "client_config": {
         "executable_command": "/path/to/melissa/examples/heat-pde/executables/build/heatc",
     }
