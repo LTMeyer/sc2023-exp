@@ -12,7 +12,7 @@ This way, access to moderate resources only (i.e. any local laptop with multiple
 
 The next sections, will guide the reader step by step.
 
-(:toc)
+[[_TOC_]]
 
 ## Building Melissa
 
