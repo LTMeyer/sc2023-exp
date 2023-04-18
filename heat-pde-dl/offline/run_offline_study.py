@@ -196,6 +196,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--nval_sims", type=int, default=10, help="number of validation solutions"
     )
+    parser.add_argument("--lr", type=str, default="stepped", help="how to update lr.")
     parser.add_argument(
         "--out_dir",
         type=str,
