@@ -282,7 +282,11 @@ python plot_loss.py
 python plot_throughput.py
 ```
 
-The figures will be saved to the `plot` directory as `png` files.
+The figures will be saved to the `plot` directory as `png` files. The figures should look like the ones below. Note however, there might be discrepancies due to the different execution time of the clients on different machines.
+
+![Throughput](Figures/tb_logs_samples_per_second_buffer_size.png "Throughput")
+
+![Loss](Figures/tb_logs_val_train.png "Training and Validation Losses")
 
 
 # Reproducing the exact figures from the paper
@@ -300,3 +304,10 @@ python3 Figure_6_largescale_onlineoffline.py
 ```
 
 Which will generate each figure in the `sc2023_data/figs` directory.
+
+These figures are displayed below are the ones presented in the article.
+
+![Figure 2](Figures/Figure_2_samples_per_second_buffer_size.png "Figure 2")
+![Figure 4](Figures/Figure_4_val_train.png "Figure 4")
+![Figure 5](Figures/Figure_5_val.png "Figure 5")
+![Figure 6](Figures/Figure_6_val_train.png "Figure 6")
