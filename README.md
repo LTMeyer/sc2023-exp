@@ -1,8 +1,8 @@
 # SC2023 reproducibility materials
 
-In accordance with the _reproducibility initiative_, this document aims at helping members of the reproducibility committee to locally reproduce single-GPU experiments presented in our SC2023 submission. It is available online [here](https://gitlab.inria.fr/melissa/sc2023/-/blob/main/README.md).
+In accordance with the _reproducibility initiative_, this document aims at helping members of the reproducibility committee to locally reproduce single-GPU experiments presented in our SC2023 submission. 
 
-Hence, although all original experiments were performed on a supercomputer, the objective here is to reproduce them locally at much smaller scale:
+The current repository contains all the files that were used for the experiments presented in the paper, from the config files to the plot generation. These experiments were run on [Jean-Zay](http://www.idris.fr/eng/jean-zay/index.html) ([ranked 124 of the Top500 list](https://www.top500.org/system/179692/)). The current repository also provides the necessary files to reproduce the experiments at a smaller scaler on a personal computer for instance. The objective here is to reproduce them locally at much smaller scale:
 - the original mesh size of 1,000,000 elements (1000x1000) is scaled down to 10,000 elements (100x100),
 - the training dataset contains 100 simulations instead of 250. 
 
@@ -10,7 +10,7 @@ This way, access to moderate resources only (i.e. any local laptop with multiple
 
 **Note**: all scripts used hereafter as well as for the paper experiments are described [here](https://gitlab.inria.fr/melissa/sc2023/-/blob/main/heat-pde-dl/README.md).
 
-The next sections, will guide the reader step by step.
+The next sections will guide the reader step by step. First, installation guidelines are provided to then run the smaller scale experiments.
 
 [[_TOC_]]
 
@@ -34,7 +34,7 @@ The following dependencies must be installed before building Melissa:
 
 On debian based systems, these dependencies can be installed via:
 ```sh
-sudo apt-get install cmake build-essential libopenmpi-dev python3.8 libzmq3-dev
+sudo apt install cmake build-essential libopenmpi-dev python3.8 libzmq3-dev
 ```
 
 All additional Python dependencies (see [`requirements.txt`](https://gitlab.inria.fr/melissa/melissa/requirements.txt) and [`requirements_deep_learning.txt`](https://gitlab.inria.fr/melissa/melissa/requirements_deep_learning.txt)) will be installed automatically with `pip` at build:
