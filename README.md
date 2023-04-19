@@ -2,7 +2,7 @@
 
 In accordance with the _reproducibility initiative_, this document aims at helping members of the reproducibility committee to locally reproduce single-GPU experiments presented in our SC2023 submission. 
 
-The current repository contains all the files that were used for the experiments presented in the paper, from the config files to the plot generation. These experiments were run on [Jean-Zay](http://www.idris.fr/eng/jean-zay/index.html) ([ranked 124 of the Top500 list](https://www.top500.org/system/179692/)). The current repository also provides the necessary files to reproduce the experiments at a smaller scaler on a personal computer for instance. The objective here is to reproduce them locally at much smaller scale:
+The current repository contains all the files that were used for the experiments presented in the paper, from the config files to the plot generation. These experiments were run on [Jean-Zay](http://www.idris.fr/eng/jean-zay/index.html) ([ranked 124 of the Top500 list](https://www.top500.org/system/179692/)). The current repository also provides the necessary files to reproduce the experiments at a smaller scaler on a personal computer for instance. To this end:
 - the original mesh size of 1,000,000 elements (1000x1000) is scaled down to 10,000 elements (100x100),
 - the training dataset contains 100 simulations instead of 250. 
 
@@ -10,7 +10,7 @@ This way, access to moderate resources only (i.e. any local laptop with multiple
 
 **Note**: all scripts used hereafter as well as for the paper experiments are described [here](https://gitlab.inria.fr/melissa/sc2023/-/blob/main/heat-pde-dl/README.md).
 
-The next sections will guide the reader step by step. First, installation guidelines are provided to then run the smaller scale experiments.
+The next sections will guide the reader step by step:
 
 [[_TOC_]]
 
@@ -144,7 +144,7 @@ Access the terminal-based Melissa monitor by opening a new terminal and executin
 
 melissa-monitor --http_bind=0.0.0.0 --http_port=8888 --http_token=<some-token> --output_dir=/path/to/experiments/sc2023/heat-pde-dl/offline/TRAINING_OUT 
 
-All output for current run will be written to /path/to/sc2023/heat-pde-dl/offline/TRAINING_OUT
+All output for current run will be written to /path/to/experiments/sc2023/heat-pde-dl/offline/TRAINING_OUT
 ```
 
 Thus, by opening a second terminal, the user should be able to follow the progress of the data generation:
@@ -228,7 +228,7 @@ The study can now be launched with the following command:
 melissa-launcher -c config_mpi.json
 ```
 
-The config file can easily be modified to assess the impact of the buffer strategy. For instance to test the `FIROQueue`:
+The config file can easily be modified to assess the impact of the buffer strategy. For instance to test the `FIRO` buffer:
 ```json
 {
     "output_dir": "FIRO_OUT",
@@ -238,7 +238,7 @@ The config file can easily be modified to assess the impact of the buffer strate
 }
 ```
 
-To test the `ReservoirQueue`:
+To test the `Reservoir` buffer:
 ```json
 {
     "output_dir": "RESERVOIR_OUT",
