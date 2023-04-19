@@ -35,7 +35,8 @@
         "buffer_size": 3000,
         "zmq_hwm": 1,
         "buffer": "ThresholdEvictOnWriteQueue",
-        "setup_jz": true
+        // this option enables multi-node DDP with slurm
+        "setup_slurm_ddp": true
     },
     "launcher_config": {
         "scheduler": "slurm-semiglobal",

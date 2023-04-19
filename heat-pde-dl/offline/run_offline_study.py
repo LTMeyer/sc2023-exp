@@ -38,9 +38,9 @@ make
 """
 
 
-def setup_environment_jz():
+def setup_environment_slurm():
     """
-    Uses JZ recommendations for setting up environment
+    Uses JZ recommendations for setting up DDP environment with slurm
     """
     from melissa.utility import idr_torch
 
@@ -213,7 +213,7 @@ if __name__ == "__main__":
     print(args)
 
     try:
-        device, idr_rank, world_size = setup_environment_jz()
+        device, idr_rank, world_size = setup_environment_slurm()
     except Exception:
         # check for cuda and use if possible
         if torch.cuda.is_available() and torch.cuda.device_count() >= 1:
