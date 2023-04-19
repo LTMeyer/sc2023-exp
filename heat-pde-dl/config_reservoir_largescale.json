@@ -29,7 +29,7 @@
     "dl_config": {
         "valid_data_path": "/gpfswork/rech/igf/commun/sc2023-heatpde-validation/",
         "n_valid_simulations": 10, 
-        "n_batches_update": 500,
+        "n_batches_update": 100,
         "batch_size": 10,
         "per_server_watermark": 1000,
         "buffer_size": 3000,
@@ -62,11 +62,11 @@
         "scheduler_arg_client": [
             "--account=igf@cpu",
             "--nodes=1",
-            "--ntasks=20",
+            "--ntasks=10",
             "--time=00:30:00",
             "--exclusive"
         ],
-        "job_limit": 1001,
+        "job_limit": 513,
         "timer_delay": 1,
         "fault_tolerance": true,
         "verbosity": 2,
