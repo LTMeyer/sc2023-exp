@@ -4,7 +4,7 @@
 {
     "server_filename": "heatpde_dl_server_largescale.py",
     "server_class": "HeatPDEServerDL",
-    "output_dir": "U1_ThresholdEvictOnWriteQueue_8GPU_withval_3000buffersize",
+    "output_dir": "Reservoir_4GPU",
     "study_options": {
         "field_names": [
             "temperature"
@@ -34,7 +34,7 @@
         "per_server_watermark": 1000,
         "buffer_size": 3000,
         "zmq_hwm": 1,
-        "buffer": "ThresholdEvictOnWriteQueue",
+        "buffer": "Reservoir",
         // this option enables multi-node DDP with slurm
         "setup_slurm_ddp": true
     },
@@ -44,13 +44,13 @@
         // one GPU
         "scheduler_arg_server": [
             "--account=igf@v100",
-            "--nodes=2",
+            "--nodes=1",
             "--ntasks-per-node=4",
             "--gres=gpu:4",
             "--cpus-per-task=10",
             "--threads-per-core=1",
             "--hint=nomultithread",
-            "--time=20:00:00"
+            "--time=02:00:00"
         ],
         // replacing the option above with the one below will
         // have for consequence to execute the server on two cores instead
