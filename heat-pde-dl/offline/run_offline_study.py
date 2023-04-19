@@ -112,7 +112,7 @@ def train_model(args, logger, train_dataloader, valid_dataloader, device, idr_ra
         optimizer, milestones=milestones, gamma=0.5
     )
 
-    print(f"Validation dataset size {valid_dataloader.dataset}")
+    print(f"Validation dataset size {len(valid_dataloader.dataset)}")
     print("Starting training loop")
     last_batch_time = time.time()
     # Train loop exactly the same as heatpde_server.py
@@ -196,6 +196,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--nval_sims", type=int, default=10, help="number of validation solutions"
     )
+    parser.add_argument("--lr", type=str, default="stepped", help="how to update lr.")
     parser.add_argument(
         "--out_dir",
         type=str,
