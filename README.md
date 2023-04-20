@@ -20,7 +20,7 @@ Melissa is a framework designed to run on supercomputers with common batch sched
 
 The user can first create a `melissa` folder by cloning it from its Inria GitLab repository and changing its target branch:
 ```sh
-git clone https://gitlab.inria.fr/melissa/melissa.git   # FIXME: ensure we clone from the tagged version!
+git clone -b SC23 https://gitlab.inria.fr/melissa/melissa.git
 cd melissa
 ```
 
