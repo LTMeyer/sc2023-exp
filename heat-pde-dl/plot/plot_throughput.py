@@ -59,10 +59,13 @@ for subdir in os.listdir(os.path.join(root_folder, batch_folder)):
 
     if "firo" in subdir:
         color = acm_colors[2]
+        label = "FIRO"
     elif "fifo" in subdir:
         color = acm_colors[3]
+        label = "FIFO"
     elif "reservoir" in subdir:
         color = acm_colors[1]
+        label = "Reservoir"
 
     t = "-"
     a = 0.8
@@ -83,7 +86,7 @@ for subdir in os.listdir(os.path.join(root_folder, batch_folder)):
         print(f"plotting for subdir {subdir} with {len(df_val)} values")
         # plot the data
         ax.plot(wall_time, df_val["value"].values, t,
-                label=folder_name, alpha=a, lw=l, color=color)
+                label=label, alpha=a, lw=l, color=color)
     n += 1
 
 
