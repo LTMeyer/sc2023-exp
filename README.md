@@ -34,7 +34,7 @@ The following dependencies must be installed before building Melissa:
 
 On debian based systems, these dependencies can be installed via:
 ```sh
-sudo apt install cmake build-essential libopenmpi-dev python3.8 libzmq3-dev
+sudo apt install -y cmake build-essential libopenmpi-dev python3.8 libzmq3-dev
 ```
 
 All additional Python dependencies (see [`requirements.txt`](https://gitlab.inria.fr/melissa/melissa/requirements.txt) and [`requirements_deep_learning.txt`](https://gitlab.inria.fr/melissa/melissa/requirements_deep_learning.txt)) will be installed automatically with `pip` at build:
