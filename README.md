@@ -12,9 +12,34 @@ This way, access to moderate resources only (i.e. any local laptop with multiple
 
 The next sections will guide the reader step by step:
 
-[[_TOC_]]
+- [SC2023 reproducibility materials](#sc2023-reproducibility-materials)
+  - [Build](#build)
+    - [Building Melissa](#building-melissa)
+    - [Building heat-pde executables](#building-heat-pde-executables)
+    - [Clone this experimental repository](#clone-this-experimental-repository)
+  - [Running the Offline vs Online experiment](#running-the-offline-vs-online-experiment)
+    - [Offline training](#offline-training)
+    - [Online training](#online-training)
+  - [Post-processing](#post-processing)
+- [Reproducing the exact figures from the paper](#reproducing-the-exact-figures-from-the-paper)
 
-## Building Melissa
+
+Clone this experimental repository
+
+
+
+Running the Offline vs Online experiment
+Offline training
+Online training
+
+
+Post-processing
+
+
+Reproducing the exact figures from the paper
+
+## Build
+### Building Melissa
 
 Melissa is a framework designed to run on supercomputers with common batch scheduler such as `slurm` or `OAR`. For local execution, Melissa relies on `OpenMPI` and the scheduling is left to the launcher. Installation guidelines are detailed on the [documentation](https://melissa.gitlabpages.inria.fr/melissa/install/) and are recalled below:
 
